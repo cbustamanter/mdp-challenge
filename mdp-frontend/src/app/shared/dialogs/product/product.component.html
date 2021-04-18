@@ -1,0 +1,124 @@
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile>
+    <div class="dialog-header">{{ title }}</div>
+  </mat-grid-tile>
+</mat-grid-list>
+<form [formGroup]="form" novalidate autocomplete="off">
+  <div mat-dialog-content>
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Código Producto</mat-label>
+          <input
+            matInput
+            placeholder="Ingrese código"
+            maxlength="10"
+            formControlName="product_cod"
+            id="product_cod"
+          />
+          <mat-error *ngIf="hasError('product_cod', 'maxlength')">
+            Solo se permite <strong>10</strong> caracteres
+          </mat-error>
+          <mat-error *ngIf="hasError('product_cod', 'required')">
+            Código Producto es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre producto</mat-label>
+          <input
+            matInput
+            placeholder="Ingresar nombre"
+            maxlength="50"
+            formControlName="name"
+            id="name"
+          />
+          <mat-error *ngIf="hasError('name', 'maxlength')">
+            Solo se permite <strong>50</strong> caracteres
+          </mat-error>
+          <mat-error *ngIf="hasError('name', 'required')">
+            Nombre es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripción producto</mat-label>
+          <textarea
+            matInput
+            placeholder="Ingresar descripción"
+            maxlength="300"
+            formControlName="product_desc"
+            id="product_desc"
+          >
+          </textarea>
+          <mat-error *ngIf="hasError('product_desc', 'maxlength')">
+            Solo se permite <strong>300</strong> caracteres
+          </mat-error>
+          <mat-error *ngIf="hasError('product_desc', 'required')">
+            Descripción producto es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Código Categoría</mat-label>
+          <mat-select formControlName="category" id="category">
+            <mat-option
+              *ngFor="let category of categories"
+              [value]="category._id"
+            >
+              {{ category.category_cod }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="hasError('category', 'required')">
+            Código Categoría es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio</mat-label>
+          <input
+            matInput
+            placeholder="Ingresar precio"
+            formControlName="price"
+            id="price"
+          />
+          <mat-error *ngIf="hasError('price', 'pattern')">
+            El precio es <strong>inválido</strong>
+          </mat-error>
+          <mat-error *ngIf="hasError('price', 'required')">
+            El precio es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <mat-select formControlName="status" id="status">
+            <mat-option *ngFor="let status of statuses" [value]="status.value">
+              {{ status.text }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="hasError('status', 'required')">
+            Estado es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-raised-button (click)="closeDialog()">Cerrar</button>
+    <button
+      (click)="submit(form.value)"
+      mat-button
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid"
+    >
+      Agregar
+    </button>
+  </div>
+</form>

@@ -1,0 +1,78 @@
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile>
+    <div class="dialog-header">{{ title }}</div>
+  </mat-grid-tile>
+</mat-grid-list>
+<form [formGroup]="form" novalidate autocomplete="off">
+  <div mat-dialog-content>
+    <mat-grid-list cols="2" rowHeight="100px">
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Código Categoria</mat-label>
+          <input
+            matInput
+            placeholder="Ingrese código"
+            maxlength="10"
+            formControlName="category_cod"
+            id="category_cod"
+          />
+          <mat-error *ngIf="hasError('category_cod', 'maxlength')">
+            Solo se permite <strong>10</strong> caracteres
+          </mat-error>
+          <mat-error *ngIf="hasError('category_cod', 'required')">
+            Código Categoria es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Descripción Categoría</mat-label>
+          <textarea
+            matInput
+            placeholder="Ingresar descripción"
+            maxlength="300"
+            formControlName="category_desc"
+            id="category_desc"
+          >
+          </textarea>
+          <mat-error *ngIf="hasError('category_desc', 'maxlength')">
+            Solo se permite <strong>300</strong> caracteres
+          </mat-error>
+          <mat-error *ngIf="hasError('category_desc', 'required')">
+            Descripción Categoría es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre Categoría</mat-label>
+          <input
+            matInput
+            placeholder="Ingresar nombre"
+            maxlength="50"
+            formControlName="category_name"
+            id="category_name"
+          />
+          <mat-error *ngIf="hasError('category_name', 'maxlength')">
+            Solo se permite <strong>50</strong> caracteres
+          </mat-error>
+          <mat-error *ngIf="hasError('category_name', 'required')">
+            Nombre Categoría es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div mat-dialog-actions align="end">
+    <button mat-button mat-raised-button (click)="closeDialog()">Cerrar</button>
+    <button
+      (click)="submit(form.value)"
+      mat-button
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid"
+    >
+      Agregar
+    </button>
+  </div>
+</form>

@@ -1,0 +1,42 @@
+<div class="addbtn">
+  <button mat-raised-button color="accent" (click)="newCategory()">
+    Añadir
+  </button>
+</div>
+
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let category of categories">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{
+          category.category_name | titlecase
+        }}</mat-card-title>
+        <mat-card-subtitle>{{ category.category_cod }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <b>Descripción:</b>
+        <p>
+          {{ category.category_desc }}
+        </p>
+        <b>Fecha de creación:</b>
+        <p>{{ category.created_at | date: "shortDate" }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="updateCategory(category)"
+        >
+          Editar
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="delete(category._id)"
+        >
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

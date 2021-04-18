@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<div mat-dialog-content class="mat-typography">
+  <h3>{{data.delete_message}}</h3>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-raised-button (click)="closeDialog()">Cancelar</button>
+  <button mat-button mat-raised-button (click)="deleteStudent()" color="warn">Sí</button>
+</div>

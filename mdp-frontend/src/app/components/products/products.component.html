@@ -1,0 +1,36 @@
+<div class="addbtn">
+  <button mat-raised-button color="accent" (click)="newProduct()">
+    Añadir
+  </button>
+</div>
+
+<mat-grid-list cols="4">
+  <mat-grid-tile *ngFor="let product of products">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name | titlecase }}</mat-card-title>
+        <mat-card-subtitle>{{ product.product_cod }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <b>Descripción:</b>
+        <p>
+          {{ product.product_desc }}
+        </p>
+        <b>Fecha de creación:</b>
+        <p>{{ product.created_at | date: "shortDate" }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="updateCategory(product)"
+        >
+          Editar
+        </button>
+        <button mat-raised-button color="warn" (click)="delete(product._id)">
+          Eliminar
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
