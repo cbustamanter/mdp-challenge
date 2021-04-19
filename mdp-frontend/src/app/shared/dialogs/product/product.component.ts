@@ -47,7 +47,7 @@ export class ProductComponent implements OnInit {
         Validators.maxLength(300),
       ]),
       category: new FormControl(
-        this.data.product.category ? this.data.product.category : '',
+        this.data.product.category ? this.data.product.category._id : '',
         [Validators.required]
       ),
       price: new FormControl(this.data.product.price, [
