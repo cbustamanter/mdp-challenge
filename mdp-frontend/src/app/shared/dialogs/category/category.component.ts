@@ -12,6 +12,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CategoryComponent implements OnInit {
   public form: FormGroup;
+  public addEditbtn = this.data.category
+    ? 'Actualizar'
+    : 'Agregar';
   public title = this.data.category
     ? 'Actualizar Categoria'
     : 'Agregar nueva Categoria';

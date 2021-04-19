@@ -19,6 +19,9 @@ export class ProductComponent implements OnInit {
     { text: 'Activo', value: true },
     { text: 'Inactivo', value: false },
   ];
+  public addEditbtn = this.data.product
+  ? 'Actualizar'
+  : 'Agregar';
   public title = this.data.product
     ? 'Actualizar Producto'
     : 'Agregar nuevo Producto';
