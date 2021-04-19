@@ -18,6 +18,8 @@
         </p>
         <b>Fecha de creación:</b>
         <p>{{ product.created_at | date: "shortDate" }}</p>
+        <b>Precio:</b>
+        <p>{{ product.price | number : '1.2-2' }}</p>
       </mat-card-content>
       <mat-card-actions>
         <button

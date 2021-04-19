@@ -8,11 +8,11 @@
 .example-card {
   background-color: #fafbfbad;
   width: 80%;
-  height: 50%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   .mat-card-content {
-    flex-grow: 1;
+    flex-grow: 0.85;
     padding-right: 1rem;
     padding-left: 1rem;
   }
