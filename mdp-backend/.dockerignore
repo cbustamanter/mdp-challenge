@@ -1,0 +1,12 @@
+node_modules
+DS_Store
+.bundle
+.idea
+.git
+/atlassian-ide-plugin.xml
+.ebextensions
+npm_debug.log
+Dockerfile
+.dockerignore
+Jenkinsfile
+docker-compose.yml
